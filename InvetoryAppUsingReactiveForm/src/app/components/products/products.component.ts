@@ -11,9 +11,11 @@ import { IProduct } from 'src/app/models/product';
 })
 export class ProductsComponent implements OnInit {
 
-    products$: Observable<IProduct[]> = this.productService.product$;
+    products$: Observable<IProduct[]> = this.productService.products$;
     delete = false;
     productToBeDeleted: IProduct;
+    productOpen;
+    selectedProduct;
 
     constructor(
         private productService: ProductService
@@ -24,11 +26,21 @@ export class ProductsComponent implements OnInit {
 
     }
 
+    onEdit(product) {
+        this.productOpen = true;
+        this.selectedProduct = product;
+    }
+
     onDelete(product: IProduct): void {
         this.delete = true;
         this.productToBeDeleted = product;
     }
 
+    addProduct() {
+        this.productOpen = true;
+        this.selectedProduct = undefined;
+    }
+    
     handleCancel(e): void {
         this.delete = false;
     }
