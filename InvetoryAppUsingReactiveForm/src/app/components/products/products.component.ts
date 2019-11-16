@@ -40,9 +40,10 @@ export class ProductsComponent implements OnInit {
         this.productOpen = true;
         this.selectedProduct = undefined;
     }
-    
+
     handleCancel(e): void {
         this.delete = false;
+        this.productOpen = false;
     }
 
     handleDelete(e): void {

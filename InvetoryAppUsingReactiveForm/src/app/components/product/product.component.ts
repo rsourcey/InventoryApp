@@ -12,6 +12,7 @@ export class ProductComponent implements OnInit {
     productForm: FormGroup;
     @Input() product;
     @Output() finish = new EventEmitter();
+    @Output() cancel = new EventEmitter();
     @ViewChild('productWizard', { static: false }) productWizard: ClrWizard;
 
     deviceType = 'tablet';
@@ -92,6 +93,7 @@ export class ProductComponent implements OnInit {
     }
 
     handleClose() {
+        this.cancel.emit();
         this.finish.emit();
         this.close();
     }
